@@ -1,0 +1,22 @@
+package com.orangeHRM.tests;
+import com.orangeHRM.pages.LoginPage;
+import com.orangeHRM.utils.ScreenshotUtil;
+import com.orangeHRM.Base.BaseTest;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class LoginTest extends BaseTest{
+	
+	@Test
+	public void validateLogin() {
+		LoginPage page=new LoginPage(driver);
+		page.login("Admin", "admin123");
+        Assert.assertTrue(page.isDashboardDisplayed(),
+                "Dashboard is not displayed after login");
+        ScreenshotUtil.captureScreenshot(driver, "LoginTest");
+
+
+	}
+	
+}

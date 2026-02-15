@@ -1,0 +1,23 @@
+package com.orangeHRM.tests;
+import com.orangeHRM.pages.LoginPage;
+import com.orangeHRM.utils.ScreenshotUtil;
+import com.orangeHRM.Base.BaseTest;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+
+
+
+public class LoginTest extends BaseTest{
+	
+	@Test
+	public void validateLogin() {
+		LoginPage page=new LoginPage(driver);
+		page.login("Admin", "admin12");
+		ScreenshotUtil.captureScreenshot(driver, "LoginTest");
+
+        Assert.assertEquals(driver.getTitle(), "Dashboard");
+	}
+	
+	}

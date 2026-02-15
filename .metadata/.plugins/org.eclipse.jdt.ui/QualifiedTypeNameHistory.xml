@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.orangeHRM.utils.ScreenshotUtil"/>
+    <fullyQualifiedTypeName name="com.orangeHRM.pages.LoginPage"/>
+    <fullyQualifiedTypeName name="com.orangeHRM.Base.BaseTest"/>
+    <fullyQualifiedTypeName name="org.openqa.selenium.WebDriver"/>
+</qualifiedTypeNameHistroy>

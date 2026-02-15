@@ -1,0 +1,43 @@
+# OrangeHRM Automation Framework (Selenium + Java + TestNG)
+
+## 📖 Project Description
+This project is a Selenium Automation Framework built using Java, TestNG, and Maven.
+It automates the login functionality of the OrangeHRM demo application.
+
+🔗 Application Under Test:
+https://opensource-demo.orangehrmlive.com/
+
+---
+
+## 🛠 Tech Stack
+- Java 17
+- Selenium WebDriver 4
+- TestNG
+- Maven
+- WebDriverManager
+- Page Object Model (POM)
+
+---
+
+## ✅ Features Automated
+- Valid Login Test
+- Invalid Login Test
+- Explicit Wait Handling
+- Screenshot Capture on Failure
+- TestNG Assertions
+- Page Object Model implementation
+
+---
+
+## 📂 Framework Structure
+- Base Layer (Browser setup & teardown)
+- Page Layer (Login Page)
+- Test Layer (TestNG Test Classes)
+- Utility Layer (Screenshot Utility)
+
+---
+
+## ▶ How to Run
+1. Clone the repository
+2. Import as Maven project
+3. Run using testng.xml

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<libraryInfos>
+    <libraryInfo home="C:\Users\sivav\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_22.0.1.v20240426-1149\jre" version="22.0.1"/>
+    <libraryInfo home="D:\Softwares\OpenJDK8U-jdk_x64_windows_hotspot_8u462b08\jdk8u462-b08" version="1.8.0_462">
+        <bootpath>
+            <entry path="D:\Softwares\OpenJDK8U-jdk_x64_windows_hotspot_8u462b08\jdk8u462-b08\jre\lib\resources.jar"/>
+            <entry path="D:\Softwares\OpenJDK8U-jdk_x64_windows_hotspot_8u462b08\jdk8u462-b08\jre\lib\rt.jar"/>
+            <entry path="D:\Softwares\OpenJDK8U-jdk_x64_windows_hotspot_8u462b08\jdk8u462-b08\jre\lib\sunrsasign.jar"/>
+            <entry path="D:\Softwares\OpenJDK8U-jdk_x64_windows_hotspot_8u462b08\jdk8u462-b08\jre\lib\jsse.jar"/>
+            <entry path="D:\Softwares\OpenJDK8U-jdk_x64_windows_hotspot_8u462b08\jdk8u462-b08\jre\lib\jce.jar"/>
+            <entry path="D:\Softwares\OpenJDK8U-jdk_x64_windows_hotspot_8u462b08\jdk8u462-b08\jre\lib\charsets.jar"/>
+            <entry path="D:\Softwares\OpenJDK8U-jdk_x64_windows_hotspot_8u462b08\jdk8u462-b08\jre\lib\jfr.jar"/>
+            <entry path="D:\Softwares\OpenJDK8U-jdk_x64_windows_hotspot_8u462b08\jdk8u462-b08\jre\classes"/>
+        </bootpath>
+        <extensionDirs>
+            <entry path="D:\Softwares\OpenJDK8U-jdk_x64_windows_hotspot_8u462b08\jdk8u462-b08\jre\lib\ext"/>
+            <entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
+        </extensionDirs>
+        <endorsedDirs>
+            <entry path="D:\Softwares\OpenJDK8U-jdk_x64_windows_hotspot_8u462b08\jdk8u462-b08\jre\lib\endorsed"/>
+        </endorsedDirs>
+    </libraryInfo>
+    <libraryInfo home="C:\Users\sivav\Downloads\OpenJDK17U-jdk_x64_windows_hotspot_17.0.18_8\jdk-17.0.18+8\bin" version="17.0.18">
+        <bootpath>
+            <entry path="null"/>
+        </bootpath>
+        <extensionDirs>
+            <entry path="null"/>
+        </extensionDirs>
+        <endorsedDirs>
+            <entry path="null"/>
+        </endorsedDirs>
+    </libraryInfo>
+    <libraryInfo home="C:\Users\sivav\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_22.0.1.v20240426-1149" version="22.0.1">
+        <bootpath>
+            <entry path="null"/>
+        </bootpath>
+        <extensionDirs>
+            <entry path="null"/>
+        </extensionDirs>
+        <endorsedDirs>
+            <entry path="null"/>
+        </endorsedDirs>
+    </libraryInfo>
+    <libraryInfo home="C:\Users\sivav\Downloads\OpenJDK17U-jdk_x64_windows_hotspot_17.0.18_8\jdk-17.0.18+8" version="17.0.18"/>
+</libraryInfos>
