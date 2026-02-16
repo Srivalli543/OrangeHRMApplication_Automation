@@ -1,0 +1,49 @@
+package com.orangeHRM.pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.Keys;
+
+public class AddUserPage {
+
+    WebDriver driver;
+
+    public AddUserPage(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    // Locators
+    By userRoleDropdown = By.xpath("(//div[@class='oxd-select-text-input'])[1]");
+    By employeeNameInput = By.xpath("//input[@placeholder='Type for hints...']");
+    By usernameInput = By.xpath("(//input[@class='oxd-input oxd-input--active'])[2]");
+    By passwordInput = By.xpath("(//input[@type='password'])[1]");
+    By confirmPasswordInput = By.xpath("(//input[@type='password'])[2]");
+    By saveButton = By.xpath("//button[normalize-space()='Save']");
+
+    // Actions
+    public void selectUserRole(String role) {
+        driver.findElement(userRoleDropdown).click();
+        driver.findElement(By.xpath("//span[text()='" + role + "']")).click();
+    }
+
+    public void enterEmployeeName(String empName) throws InterruptedException {
+        driver.findElement(employeeNameInput).sendKeys(empName);
+        Thread.sleep(2000); // better to replace with explicit wait
+        driver.findElement(employeeNameInput).sendKeys(Keys.ARROW_DOWN);
+        driver.findElement(employeeNameInput).sendKeys(Keys.ENTER);
+    }
+
+    public void enterUsername(String username) {
+        driver.findElement(usernameInput).sendKeys(username);
+    }
+
+    public void enterPassword(String password) {
+        driver.findElement(passwordInput).sendKeys(password);
+        driver.findElement(confirmPasswordInput).sendKeys(password);
+    }
+
+    public void clickSave() {
+        driver.findElement(saveButton).click();
+    }
+}
+

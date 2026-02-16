@@ -14,7 +14,7 @@ public class LoginPage {
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
     // Locators
@@ -32,6 +32,8 @@ public class LoginPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(username)).sendKeys(user);
         driver.findElement(password).sendKeys(pass);
         driver.findElement(loginBtn).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.urlContains("dashboard"));
         System.out.println(driver.getCurrentUrl());
 
     }

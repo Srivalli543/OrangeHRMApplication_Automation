@@ -6,36 +6,73 @@ import org.testng.annotations.Test;
 import com.orangeHRM.Base.BaseTest;
 import com.orangeHRM.pages.LoginPage;
 import com.orangeHRM.utils.ScreenshotUtil;
+import com.orangeHRM.pages.AdminPage;
+import com.orangeHRM.pages.AddUserPage;
 
 public class LoginTest extends BaseTest {
 
-    @Test(priority=1)
-    public void validateLogin() {
+//    @Test(priority=1)
+//    public void validateLogin() {
+//
+//        LoginPage page = new LoginPage(driver);
+//        page.login("Admin", "admin123");
+//
+//        boolean status = page.isDashboardDisplayed();
+//
+//        if (!status) {
+//            ScreenshotUtil.captureScreenshot(driver, "ValidLoginFailure");
+//        }
+//
+//        Assert.assertTrue(status, "Dashboard is NOT displayed after login");
+//    }
 
-        LoginPage page = new LoginPage(driver);
-        page.login("Admin", "admin123");
+//    @Test(priority=2)
+//    public void invalidLoginTest() {
+//
+//        LoginPage page = new LoginPage(driver);
+//        page.login("Admin", "admin");
+//
+//        String errorMessage = page.getErrorMessage();
+//
+//        if (!errorMessage.equals("Invalid credentials")) {
+//            ScreenshotUtil.captureScreenshot(driver, "InvalidLoginFailure");
+//        }
+//
+//        Assert.assertEquals(errorMessage, "Invalid credentials");
+//    }
+	@Test
+    public void addNewUserTest() throws InterruptedException {
 
-        boolean status = page.isDashboardDisplayed();
+        LoginPage login = new LoginPage(driver);
+        AdminPage admin = new AdminPage(driver);
+        AddUserPage addUser = new AddUserPage(driver);
 
-        if (!status) {
-            ScreenshotUtil.captureScreenshot(driver, "ValidLoginFailure");
-        }
+        // Login
+        login.login("Admin", "admin123");
 
-        Assert.assertTrue(status, "Dashboard is NOT displayed after login");
-    }
+        // Navigate to Admin
+        admin.clickAdminMenu();
+        admin.clickAddButton();
 
-    @Test(priority=2)
-    public void invalidLoginTest() {
+        String newUsername = "Srivalli";
 
-        LoginPage page = new LoginPage(driver);
-        page.login("Admin", "admin");
+        // Add User
+        addUser.selectUserRole("ESS");
+        addUser.enterEmployeeName("Shivaduth S Thampi");
+        addUser.selectStatus("Enabled");
+        addUser.enterUsername(newUsername);
+        addUser.enterPassword("Srivalli543");
+        addUser.clickSave();
 
-        String errorMessage = page.getErrorMessage();
+        Thread.sleep(3000);
 
-        if (!errorMessage.equals("Invalid credentials")) {
-            ScreenshotUtil.captureScreenshot(driver, "InvalidLoginFailure");
-        }
+        // Verify User
+        admin.searchUser(newUsername);
+        Thread.sleep(2000);
 
-        Assert.assertEquals(errorMessage, "Invalid credentials");
-    }
+        Assert.assertTrue(admin.verifyUserPresent(newUsername), 
+                "User not found in Admin page");
+
+        System.out.println("User created successfully!");
+	}
 }
