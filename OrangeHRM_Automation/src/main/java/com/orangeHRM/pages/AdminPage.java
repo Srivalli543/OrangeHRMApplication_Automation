@@ -26,6 +26,10 @@ public class AdminPage {
     private By usernameSearchField = By.xpath("(//input[@class='oxd-input oxd-input--active'])[2]");
     private By searchButton = By.xpath("//button[normalize-space()='Search']");
     private By resultTableRows = By.xpath("//div[@role='rowgroup']/div");
+    private By deleteConfirmButton = By.xpath("//button[normalize-space()='Yes, Delete']");
+    private By tableRows = By.xpath("//div[@role='rowgroup']/div");
+    private By noRecordsFound = By.xpath("//span[text()='No Records Found']");
+
 
     // ================= ACTION METHODS =================
 
@@ -67,4 +71,33 @@ public class AdminPage {
         }
         return false;
     }
+    public void deleteUser(String username) {
+
+        // Wait for search results
+        wait.until(ExpectedConditions.visibilityOfElementLocated(tableRows));
+
+        // Click delete icon for specific username row
+        By deleteIcon = By.xpath("//div[@role='row' and .//div[text()='" + username + "']]//button//i[contains(@class,'bi-trash')]");
+
+        wait.until(ExpectedConditions.elementToBeClickable(deleteIcon)).click();
+
+        // Wait for confirmation popup and click Yes, Delete
+        wait.until(ExpectedConditions.elementToBeClickable(deleteConfirmButton)).click();
+
+        // Wait until popup disappears
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(deleteConfirmButton));
+    }
+    public boolean isUserDeleted(String username) {
+
+        searchUser(username);
+
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(noRecordsFound));
+            return true;   // User deleted
+        } catch (Exception e) {
+            return false;  // User still exists
+        }
+    }
+
+
 }
