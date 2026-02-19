@@ -48,14 +48,37 @@ public class AdminPage {
     // Search user by username
     public void searchUser(String username) {
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(usernameSearchField)).clear();
-        driver.findElement(usernameSearchField).sendKeys(username);
+        WebElement searchField = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(usernameSearchField));
 
-        wait.until(ExpectedConditions.elementToBeClickable(searchButton)).click();
+        searchField.clear();
+        searchField.sendKeys(username);
 
-        // Wait for results to load
-        wait.until(ExpectedConditions.visibilityOfElementLocated(resultTableRows));
+        // Click outside to close any dropdown overlay
+        driver.findElement(By.tagName("body")).click();
+
+        WebElement searchBtn = wait.until(
+                ExpectedConditions.elementToBeClickable(searchButton));
+
+        searchBtn.click();
+
+        // Wait for either results OR no records message
+        wait.until(ExpectedConditions.or(
+                ExpectedConditions.visibilityOfElementLocated(resultTableRows),
+                ExpectedConditions.visibilityOfElementLocated(noRecordsFound)
+        ));
     }
+
+//    public void searchUser(String username) {
+//
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(usernameSearchField)).clear();
+//        driver.findElement(usernameSearchField).sendKeys(username);
+//
+//        wait.until(ExpectedConditions.elementToBeClickable(searchButton)).click();
+//
+//        // Wait for results to load
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(resultTableRows));
+//    }
 
     // Verify user present in result table
     public boolean verifyUserPresent(String username) {

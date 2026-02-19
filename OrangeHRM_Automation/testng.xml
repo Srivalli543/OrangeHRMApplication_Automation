@@ -2,7 +2,12 @@
 <suite name="OrangeHRM Suite">
     <test name="Login Tests">
         <classes>
-            <class name="com.orangeHRM.tests.LoginTest"/>
+            <class name="com.orangeHRM.tests.LoginPageValidation"/>
+        </classes>
+    </test>
+    <test name="AdminPage Tests">
+        <classes>
+            <class name="com.orangeHRM.tests.AdminPageValidation"/>
         </classes>
     </test>
 </suite>

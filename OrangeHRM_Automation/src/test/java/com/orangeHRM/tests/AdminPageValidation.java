@@ -1,0 +1,57 @@
+package com.orangeHRM.tests;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import com.orangeHRM.pages.AddUserPage;
+import com.orangeHRM.pages.AdminPage;
+import com.orangeHRM.pages.LoginPage;
+
+import com.orangeHRM.BaseTest.BaseTest;
+public class AdminPageValidation extends BaseTest {
+	@Test
+    public void addNewUserTest() throws InterruptedException {
+
+        LoginPage login = new LoginPage(driver);
+        AdminPage admin = new AdminPage(driver);
+        AddUserPage addUser = new AddUserPage(driver);
+
+        // Login
+        login.login("Admin", "admin123");
+
+        // Navigate to Admin
+        admin.clickAdminMenu();
+        admin.clickAddButton();
+
+        String newUsername = "Srivalli";
+
+        // Add User
+        addUser.selectUserRole("ESS");
+        addUser.enterEmployeeName("Shivaduth S Thampi");
+        addUser.selectStatus("Enabled");
+        addUser.enterUsername(newUsername);
+        addUser.enterPassword("Srivalli543");
+        addUser.clickSave();
+
+        Thread.sleep(3000);
+
+        // Verify User is added
+        admin.searchUser(newUsername);
+        Thread.sleep(2000);
+
+        Assert.assertTrue(admin.verifyUserPresent(newUsername), 
+                "User not found in Admin page");
+
+        System.out.println("User created successfully!");
+        
+     // 🔹 Delete User
+        admin.deleteUser(newUsername);
+
+        // 🔹 Verify User Deleted
+        Assert.assertTrue(admin.isUserDeleted(newUsername),
+                "User deletion failed!");
+
+        System.out.println("User deleted successfully!");
+	}
+
+}

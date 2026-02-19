@@ -4,6 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.orangeHRM.utils.WaitUtil;
+
+import org.openqa.selenium.WebElement;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.time.Duration;
 
@@ -17,10 +21,10 @@ public class LoginPage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
-    // Locators
-    By username = By.name("username");
-    By password = By.name("password");
-    By loginBtn = By.xpath("//button[@type='submit']");
+    // Locators 
+//    By username = By.name("username");
+//    By password = By.name("password");
+//    By loginBtn = By.xpath("//button[@type='submit']");
     
     // More stable Dashboard locator
     By dashboardText = By.xpath("//h6[contains(@class,'oxd-topbar-header-breadcrumb-module')]");
@@ -29,25 +33,35 @@ public class LoginPage {
 
     // Login method
     public void login(String user, String pass) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(username)).sendKeys(user);
-        driver.findElement(password).sendKeys(pass);
-        driver.findElement(loginBtn).click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.urlContains("dashboard"));
-        System.out.println(driver.getCurrentUrl());
+        WebElement UsernameInput = driver.findElement(By.xpath("//input[@placeholder='Username']"));
+    	WebElement PasswordInput = driver.findElement(By.xpath("//input[@placeholder='Password']"));
+    	WebElement Login = driver.findElement(By.xpath("//button[@type='submit']"));
+       	WaitUtil.Elementtobevisible(driver, Login, 5);
+		System.out.println(UsernameInput.isEnabled());
+		System.out.println(PasswordInput.isEnabled());
+    	UsernameInput.sendKeys(user);
+    	PasswordInput.sendKeys(pass);
+    	Login.click();
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(username)).sendKeys(user);
+//        driver.findElement(password).sendKeys(pass);
+//        driver.findElement(loginBtn).click();
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        wait.until(ExpectedConditions.urlContains("dashboard"));
+//        System.out.println(driver.getCurrentUrl());
+        
 
     }
 
     // Validate Dashboard
-    public boolean isDashboardDisplayed() {
-        try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(dashboardText));
-            String text = driver.findElement(dashboardText).getText();
-            return text.equalsIgnoreCase("Dashboard");
-        } catch (Exception e) {
-            return false;
-        }
-    }
+//    public boolean isDashboardDisplayed() {
+//        try {
+//            wait.until(ExpectedConditions.visibilityOfElementLocated(dashboardText));
+//            String text = driver.findElement(dashboardText).getText();
+//            return text.equalsIgnoreCase("Dashboard");
+//        } catch (Exception e) {
+//            return false;
+//        }
+//    }
 
     // Get Invalid Login Message
     public String getErrorMessage() {
