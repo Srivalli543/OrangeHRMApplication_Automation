@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.time.Duration;
+import java.util.Set;
 
 public class LoginPage {
 
@@ -47,8 +48,7 @@ public class LoginPage {
 //        driver.findElement(loginBtn).click();
 //        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 //        wait.until(ExpectedConditions.urlContains("dashboard"));
-//        System.out.println(driver.getCurrentUrl());
-        
+//        System.out.println(driver.getCurrentUrl());   
 
     }
 
@@ -67,5 +67,22 @@ public class LoginPage {
     public String getErrorMessage() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(errorMsg));
         return driver.findElement(errorMsg).getText();
+    }
+    
+    public void multipleWindow() {
+    	String parentWindow=driver.getWindowHandle();
+    	driver.findElement(By.linkText("OrangeHRM, Inc")).click();
+    	Set<String> allWindows=driver.getWindowHandles();
+    	for(String window:allWindows) {
+    		if(!window.equals(parentWindow)) {
+    			driver.switchTo().window(window);
+    		}
+    	}
+    	System.out.println(driver.getTitle());
+    	
+    	driver.switchTo().window(parentWindow);
+    	
+    	System.out.println(driver.getTitle());
+    	
     }
 }

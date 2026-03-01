@@ -3,13 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.orangeHRM.tests.AdminPageValidation">
+      <class name="com.orangeHRM.tests.LoginPageValidation">
         <methods>
-          <include name="addNewUserTest"/>
+          <include name="multipleWindowValidation"/>
+          <include name="validateLogin"/>
           <include name="setup"/>
           <include name="tearDown"/>
+          <include name="invalidLoginTest"/>
         </methods>
-      </class> <!-- com.orangeHRM.tests.AdminPageValidation -->
+      </class> <!-- com.orangeHRM.tests.LoginPageValidation -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

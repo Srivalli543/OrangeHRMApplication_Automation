@@ -2,6 +2,7 @@ package com.orangeHRM.BaseTest;
 
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeMethod;
@@ -23,6 +24,12 @@ public class BaseTest {
         driver.manage().deleteAllCookies();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://opensource-demo.orangehrmlive.com/");
+        String title=driver.getTitle();
+        
+        System.out.println(title);
+        if(title=="This site can't be reached") {
+        	driver.quit();
+        }
     }
 
     @AfterMethod

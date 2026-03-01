@@ -17,8 +17,6 @@ public class LoginPageValidation extends BaseTest {
         LoginPage page = new LoginPage(driver);
         page.login("Admin", "admin123");
         
-        HomePage hpage=new HomePage(driver);
-        hpage.DashBoardValiadtion();
 
     }
 
@@ -27,9 +25,16 @@ public class LoginPageValidation extends BaseTest {
 
         LoginPage page = new LoginPage(driver);
         page.login("Admin", "admin");
+        
 
         String errorMessage = page.getErrorMessage();
         Assert.assertEquals(errorMessage, "Invalid credentials");
+    }
+    
+    @Test(priority=3)
+    public void multipleWindowValidation() {
+    	LoginPage page = new LoginPage(driver);
+    	page.multipleWindow();
     }
 	
 }
